@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ironMaidenApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Iron Maiden</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body class="black">
+<form name="albumsForm" novalidate>
+<div ng-controller="MainCtrl">
+    <div class="header">
+        <h1>Iron Maiden</h1>
+        <input class="search-box" name="search" type="text" placeholder="Search" data-ng-model="searchText">
+        <label class="search-result small-text right" data-ng-show="searchText">Matched {{filteredAlbums.length}} of {{data.total}} albums total</label>
+    </div>
+    <div class="content">
+        <ul class="albumList">
+            <div class="pages">
+                <a href="javascript:void(0)" data-ng-if="data.previous" ng-click="getPage(data.previous)">Previous</a>
+                <a href="javascript:void(0)" data-ng-if="data.next" ng-click="getPage(data.next)">Next</a>
+            </div>
+            <li data-ng-repeat="album in filteredAlbums = (albums | filter:{name:searchText}) track by album.id">
+                <div>
+                    <div class="li">
+                        <img src="{{album.images[1].url}}" class="cover">
+                    </div>
+                    <div class="title">{{album.name}}</div>
+                </div>
+            </li>
+        </ul>
+        <label class="medium" data-ng-if="filteredAlbums.length == 0">No matching items</label>
+    </div>
+</div>
+</form>
+</body>
+<script src="lib/angular.js"></script>
+<script src="app.js"></script>
+</html>

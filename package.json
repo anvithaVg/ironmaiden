@@ -19,5 +19,8 @@
     "karma-jasmine": "^0.3.5",
     "karma-mocha-reporter": "^1.0.2",
     "mocha": "^2.3.2"
+  },
+  "scripts": {
+    "unit": "karma start karma.conf.js"
   }
 }

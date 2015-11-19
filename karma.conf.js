@@ -4,7 +4,7 @@ module.exports = function (config) {
 
         // list of files to load in the browser
         files: [
-            'app/js/lib/angular.js',
+            'app/lib/angular.js',
             'app/app.js',
             'test/unit.js'
         ],
